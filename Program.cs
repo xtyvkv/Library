@@ -236,7 +236,7 @@ namespace LibraryTerminal
                 }
                 else
                 {
-                    Console.WriteLine("No matches found. Here is a list of our available books:");
+                    Console.WriteLine("No matches found. Here is a list of our books:");
                     List<Book> libraryBooks = buildLibrary();
                     displayList(libraryBooks);
                 }

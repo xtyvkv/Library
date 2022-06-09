@@ -37,3 +37,7 @@ obj/Library.csproj.nuget.dgspec.json
 obj/Library.csproj.nuget.g.props
 obj/project.assets.json
 obj/project.nuget.cache
+bin/Debug/net5.0/Library.dll
+bin/Debug/net5.0/Library.pdb
+obj/Debug/net5.0/Library.dll
+obj/Debug/net5.0/Library.pdb
