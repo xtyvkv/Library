@@ -39,6 +39,7 @@ namespace LibraryTerminal
         {
             List<Book> libraryBooks = buildLibrary();
             bool continueRunning = true;
+            bool burnedDown = false;
             Console.WriteLine("Welcome to the C Sharts Library!");
             while (continueRunning)
             {
@@ -70,12 +71,37 @@ namespace LibraryTerminal
                 else if (response == "light a match")
                 {
                     burnBooks(libraryBooks);
+                    burnedDown = true;
+                    break;
                 }
                 else if (String.IsNullOrEmpty(response))
                 {
                     Console.WriteLine("Goodbye!");
                     // save book list
                     continueRunning = false;
+
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Selection.\n");
+                }
+            }
+            while (burnedDown == true)
+            {
+                Console.WriteLine("Please Enter Your Selection:\n");
+                Console.WriteLine("1. Display The List of Books");
+                Console.WriteLine("or hit 'enter' to quit.");
+                string response = Console.ReadLine();
+                if (response == "1")
+                {
+                    displayList(libraryBooks);
+                }
+                else if (String.IsNullOrEmpty(response))
+                {
+                    Console.WriteLine("Goodbye!");
+                    // save book list
+                    continueRunning = false;
+                    break;
 
                 }
                 else
