@@ -214,7 +214,7 @@ namespace LibraryTerminal
                     Console.WriteLine("Would you like to check any of these / this book out (y/n)?");
                     // fix that wording^
                     string answerSearchCheckout = Console.ReadLine().ToLower();
-                    // do we use string^^
+                    // do we use string?^^
                     if (answerSearchCheckout == "y")
                     {
                         selectBook(searchResult);
@@ -334,8 +334,6 @@ namespace LibraryTerminal
             }
             return;
         }
-
-
         public static void returnBook(List<Book> myBooks)
         {
             bool continueReturns = true;
