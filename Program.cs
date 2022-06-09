@@ -1,26 +1,4 @@
-﻿/* OUTLINE
-do
-{ 
-1.Display the entire list of books.  Format it nicely. // display method
-  a.Display Book Number, Book Title, Author, Status and Due Date 
-2.	Search for a book //search method
-  a.	By Author
-  b.	By Title keyword
-3.	Select a Book from the list //select method
-  a.	If not a valid book, display error and prompt user for another choice or display the list.
-  b.   If it’s already checked out, let them know.
-  c.   If not, check it out to them and set the due date to 2 weeks from today.
-4.	Return a book (we can decide how that works/questions to ask) //return a book method
-  a.Ask which book they want to return
-  b.	If book isn’t checked out, give error
-  c.	If book is checked out: 
-          i.update status 
-          ii.	clear out due date. 
-5.	Exit – Hit enter to exit
-) while (continueRunning = true) 
-*/
-
-// TO DO:
+﻿// TO DO:
 // consistant spacing/line breaks
 // export book list to txt file
 // fix selection from search results list
@@ -206,12 +184,10 @@ namespace LibraryTerminal
         }
         public static void searchBook(List<Book> myBooks)
         {
-            // TO DO
-            // Option to select and check out from results list
             Console.WriteLine();
-            Console.WriteLine("Would you like to search Titles or Authors?");
+            Console.WriteLine("Would you like to search Title or Author?");
             string titlesOrAuthors = Console.ReadLine().ToLower();
-            if (titlesOrAuthors == "titles")
+            if (titlesOrAuthors == "title")
             {
                 Console.WriteLine();
                 Console.WriteLine("Enter a keyword to lookup a title:");
@@ -240,24 +216,6 @@ namespace LibraryTerminal
                         }
                     }
                     Console.WriteLine();
-                    Console.WriteLine("Would you like to check any of these / this book out (y/n)?");
-                    // fix that wording^
-                    string answerSearchCheckout = Console.ReadLine().ToLower();
-                    // do we use string?^^
-                    if (answerSearchCheckout == "y")
-                    {
-                        selectBook(searchResult);
-                        Console.WriteLine();
-                    }
-                    else if (answerSearchCheckout == "n")
-                    {
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input.");
-                        Console.WriteLine();
-                    }
                 }
                 else
                 {
@@ -266,7 +224,7 @@ namespace LibraryTerminal
                     displayList(libraryBooks);
                 }
             }
-            else if (titlesOrAuthors == "authors")
+            else if (titlesOrAuthors == "author")
             {
                 Console.WriteLine("Enter a first, last, or full name to lookup an Author:");
                 string keyword = Console.ReadLine();
@@ -297,7 +255,6 @@ namespace LibraryTerminal
             else
             {
                 Console.WriteLine("Invalid input.");
-                // re-run searchBook ?
             }
         }
         public static void selectBook(List<Book> myBooks)
