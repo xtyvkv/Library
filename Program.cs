@@ -53,6 +53,7 @@ namespace LibraryTerminal
                 }
                 else if (response == "3")
                 {
+                    // check for redundancies
                     displayList(libraryBooks);
                     selectBook(libraryBooks);
                 }
@@ -172,7 +173,6 @@ namespace LibraryTerminal
         public static void searchBook(List<Book> myBooks)
         {
             // TO DO
-            // Case sesitivity with title/author input
             // Option to select and check out from results list
             Console.WriteLine("Would you like to search Titles or Authors?");
             string titlesOrAuthors = Console.ReadLine().ToLower();
@@ -180,7 +180,7 @@ namespace LibraryTerminal
             {
                 Console.WriteLine("Enter a keyword to lookup a title:");
                 string keyword = Console.ReadLine();
-                List<Book> searchResult = myBooks.Where(Book => Book.Title.Contains(keyword)).ToList();
+                List<Book> searchResult = myBooks.Where(Book => Book.Title.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
                 if (searchResult.Count > 0)
                 {
                     Console.WriteLine("Results found:");
@@ -214,7 +214,7 @@ namespace LibraryTerminal
             {
                 Console.WriteLine("Enter a first, last, or full name to lookup an Author:");
                 string keyword = Console.ReadLine();
-                List<Book> searchResult = myBooks.Where(Book => Book.Author.Contains(keyword)).ToList();
+                List<Book> searchResult = myBooks.Where(Book => Book.Author.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
                 if (searchResult.Count > 0)
                 {
                     Console.WriteLine("Results found:");
@@ -241,10 +241,9 @@ namespace LibraryTerminal
             else
             {
                 Console.WriteLine("Invalid input.");
-                // re-run searchBook
+                // re-run searchBook ?
             }
         }
-        // NEED TO FIX: need to not allow the book to be selected if checked out
         public static void selectBook(List<Book> myBooks)
         {
             bool continueSelection = true;
