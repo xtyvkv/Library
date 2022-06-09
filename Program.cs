@@ -24,6 +24,7 @@ do
 // consistant spacing/line breaks
 // export book list to txt file
 // fix selection from search results list
+// after burning, list is empty unless searching w/ no results
 
 using System;
 using System.Collections.Generic;
