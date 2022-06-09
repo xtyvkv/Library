@@ -20,6 +20,11 @@ do
 ) while (continueRunning = true) 
 */
 
+// TO DO:
+// consistant spacing/line breaks
+// export book list to txt file
+// fix selection from search results list
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -174,16 +179,19 @@ namespace LibraryTerminal
         {
             // TO DO
             // Option to select and check out from results list
+            Console.WriteLine();
             Console.WriteLine("Would you like to search Titles or Authors?");
             string titlesOrAuthors = Console.ReadLine().ToLower();
             if (titlesOrAuthors == "titles")
             {
+                Console.WriteLine();
                 Console.WriteLine("Enter a keyword to lookup a title:");
                 string keyword = Console.ReadLine();
                 List<Book> searchResult = myBooks.Where(Book => Book.Title.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
                 if (searchResult.Count > 0)
                 {
                     Console.WriteLine("Results found:");
+                    Console.WriteLine();
                     Console.WriteLine(string.Format("{0,-4}{1,-30}{2,-25}{3,-20}{4,-20}", "", "Title", "Author", "Status", "Return Date"));
                     Console.WriteLine(string.Format("{0,-4}{1,-30}{2,-25}{3,-20}{4,-20}", "", "=====", "======", "======", "==========="));
                     for (int i = 0; i < searchResult.Count; i++)
@@ -201,6 +209,25 @@ namespace LibraryTerminal
                             status = "Available";
                             Console.WriteLine(string.Format("{0,-4}{1,-30}{2,-25}{3,-20}{4,-20}", $"{bookNum}: ", $"{searchResult[i].Title} ", $"{searchResult[i].Author} ", $"{status}", ""));
                         }
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine("Would you like to check any of these / this book out (y/n)?");
+                    // fix that wording^
+                    string answerSearchCheckout = Console.ReadLine().ToLower();
+                    // do we use string^^
+                    if (answerSearchCheckout == "y")
+                    {
+                        selectBook(searchResult);
+                        Console.WriteLine();
+                    }
+                    else if (answerSearchCheckout == "n")
+                    {
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input.");
+                        Console.WriteLine();
                     }
                 }
                 else
