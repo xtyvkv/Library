@@ -154,6 +154,7 @@ namespace LibraryTerminal
             Console.WriteLine("Congratulations. You have burned every single book to a crisp.");
             Console.WriteLine("Hate to break it to you, but the C Sharts library was actually");
             Console.WriteLine("the Library of Alexandria. People are gunna be pretty mad...");
+            Console.WriteLine();
         }
         public static void displayList(List<Book> myBooks)
         {
