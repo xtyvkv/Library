@@ -23,6 +23,8 @@ do
 using System;
 using System.Collections.Generic;
 using System.Linq;
+// using System.IO;
+
 namespace LibraryTerminal
 {
     internal class Program
@@ -65,6 +67,7 @@ namespace LibraryTerminal
                 else if (String.IsNullOrEmpty(response))
                 {
                     Console.WriteLine("Goodbye!");
+                    // save book list
                     continueRunning = false;
 
                 }
@@ -106,7 +109,6 @@ namespace LibraryTerminal
         }
         public class Book
         {
-            //add book number
             public int BookNum { get; set; }
             public string Title { get; set; }
             public string Author { get; set; }
@@ -120,6 +122,10 @@ namespace LibraryTerminal
                 CheckedOutStatus = newStatus;
                 DueDate = newDate;
             }
+        }
+        public static void saveList(List<Book> myBooks)
+        {
+            // File.WriteAllLines("SavedLists.txt", myBooks);
         }
         public static void burnBooks(List<Book> myBooks)
         {
@@ -165,7 +171,9 @@ namespace LibraryTerminal
         }
         public static void searchBook(List<Book> myBooks)
         {
+            // TO DO
             // Case sesitivity with title/author input
+            // Option to select and check out from results list
             Console.WriteLine("Would you like to search Titles or Authors?");
             string titlesOrAuthors = Console.ReadLine().ToLower();
             if (titlesOrAuthors == "titles")
@@ -200,8 +208,6 @@ namespace LibraryTerminal
                     Console.WriteLine("No matches found. Here is a list of our available books:");
                     List<Book> libraryBooks = buildLibrary();
                     displayList(libraryBooks);
-                    // select book to check out?
-                    // probably better if it takes them back to the main menu
                 }
             }
             else if (titlesOrAuthors == "authors")
@@ -249,7 +255,6 @@ namespace LibraryTerminal
                 {
                     Console.WriteLine("Enter your choice by book number:");
                     string choice = Console.ReadLine();
-                    //int choiceInt = int.Parse(choice);
                     int choiceInt;
                     bool isValidInt = int.TryParse(choice, out choiceInt);
                     if (String.IsNullOrEmpty(choice) || (isValidInt == false))
@@ -323,8 +328,6 @@ namespace LibraryTerminal
                         Console.WriteLine("Invalid Input. Returning to the Main Menu\n");
                         continueReturns = false;
                     }
-
-                    //Book selectedBook = myBooks.Where(Book => Book.BookNum == choiceInt).FirstOrDefault();
                     else if (choiceInt < 0 || choiceInt > myBooks.Count)
                     {
                         Console.WriteLine("Invalid Book Number. Please enter a book number from our library\n");
