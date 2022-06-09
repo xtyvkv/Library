@@ -152,6 +152,8 @@ namespace LibraryTerminal
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (textToEnter.Length / 2)) + "}", textToEnter));
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Congratulations. You have burned every single book to a crisp.");
+            Console.WriteLine("Hate to break it to you, but the C Sharts library was actually");
+            Console.WriteLine("the Library of Alexandria. People are gunna be pretty mad...");
         }
         public static void displayList(List<Book> myBooks)
         {
